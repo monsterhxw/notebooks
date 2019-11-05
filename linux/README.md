@@ -1,0 +1,76 @@
+# 记录日常 Linux Commands
+
+### 更改某个文件或目录的属主和属组。
+
+```bash
+$ chown -R web:web /data/demo
+```
+
+### 建立软连接
+
+```bash
+$ ln -s source target
+```
+
+###  更换 Nginx 的 SSL 证书
+
+- **Local**
+
+    ```bash
+    $ tar -czf ssl.tar.gz *
+    
+    $ scp ./ssl.tar.gz root@120.79.148.152:/usr/share/nginx/ca/test.ostonline.com
+    ```
+
+- **Server**
+
+    ```bash
+    $ cd /usr/share/nginx/ca/test.ostonline.com
+    
+    $ tar -xzvf ssl.tar.gz && rm -fr ./ssl.tar.gz
+    
+    $ chmod -R +x /usr/share/nginx/ca/test.ostonline.com
+    
+    $ nginx -t 
+    
+    $ systemctl reload nginx
+    ```
+
+### nohup 后台启动 jar
+
+- **Local**
+
+    ```bash
+    $ scp ./uums-0.0.1-SNAPSHOT.jar root@120.79.148.152:/data/uums/ /data/uums目录
+    ```
+
+- **Server**
+
+    ```bash
+    $ ps -ef |grep  java
+    
+    $ kill -9 pid
+    
+    $ nohup java -jar uums-0.0.1-SNAPSHOT.jar &
+    
+    $ nohup java -jar uums-0.0.1-SNAPSHOT.jar -Xms512m -Xmx512m -XX:CompressedClassSpaceSize=128m -XX:MetaspaceSize=200m -XX:MaxMetaspaceSize=200m &
+    ```
+
+### 配置微信文件到 Nginx 步骤
+
+```bash
+$ scp /本地文件路径/本地文件名 root@39.108.51.96:/data/域名
+
+$ cd /etc/nginx/conf.d/域名
+
+$ vi 域名.conf
+
+# 在 Nginx 的配置文件添加命令
+#  location /微信文件.txt {
+#    alias /data/ostonline.com/微信文件.txt;
+#  }
+
+$ nginx -t 
+
+$ systemctl reload nginx
+```
