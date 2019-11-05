@@ -91,7 +91,7 @@ body 应该包括更改的动机，并将其与之前的行为进行对比。
 
 `footer` 应包含关于  **Breaking Changes** 的任何信息，也是 [引用此提交关闭的GitHub问题](https://help.github.com/articles/closing-issues-via-commit-messages/) 的地方。
 
-**Breaking Changes**应以 `BREAKING CHANGE: `开头：
+**Breaking Changes** 应以 `BREAKING CHANGE: `开头：
 
 - 带有一个或两个换行符
 - 然后将其余的提交消息（**commit message**）用于此目的。
