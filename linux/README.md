@@ -19,17 +19,17 @@ $ ln -s source target
     ```bash
     $ tar -czf ssl.tar.gz *
     
-    $ scp ./ssl.tar.gz root@120.79.148.152:/usr/share/nginx/ca/test.ostonline.com
+    $ scp ./ssl.tar.gz root@xxx.xxx.xxx.xxx:/usr/share/nginx/ca/xxx.com
     ```
 
 - **Server**
 
     ```bash
-    $ cd /usr/share/nginx/ca/test.ostonline.com
+    $ cd /usr/share/nginx/ca/xxx.com
     
     $ tar -xzvf ssl.tar.gz && rm -fr ./ssl.tar.gz
     
-    $ chmod -R +x /usr/share/nginx/ca/test.ostonline.com
+    $ chmod -R +x /usr/share/nginx/ca/xxx.com
     
     $ nginx -t 
     
@@ -41,7 +41,7 @@ $ ln -s source target
 - **Local**
 
     ```bash
-    $ scp ./uums-0.0.1-SNAPSHOT.jar root@120.79.148.152:/data/uums/ /data/uums目录
+    $ scp ./demo-0.0.1-SNAPSHOT.jar root@xxx.xxx.xxx.xxx:/data/uums/ /data/demo
     ```
 
 - **Server**
@@ -51,15 +51,15 @@ $ ln -s source target
     
     $ kill -9 pid
     
-    $ nohup java -jar uums-0.0.1-SNAPSHOT.jar &
+    $ nohup java -jar demo-0.0.1-SNAPSHOT.jar &
     
-    $ nohup java -jar uums-0.0.1-SNAPSHOT.jar -Xms512m -Xmx512m -XX:CompressedClassSpaceSize=128m -XX:MetaspaceSize=200m -XX:MaxMetaspaceSize=200m &
+    $ nohup java -jar demo-0.0.1-SNAPSHOT.jar -Xms512m -Xmx512m -XX:CompressedClassSpaceSize=128m -XX:MetaspaceSize=200m -XX:MaxMetaspaceSize=200m &
     ```
 
 ### 配置微信文件到 Nginx 步骤
 
 ```bash
-$ scp /本地文件路径/本地文件名 root@39.108.51.96:/data/域名
+$ scp /本地文件路径/本地文件名 root@xxx.xxx.xxx.xxx:/data/域名
 
 $ cd /etc/nginx/conf.d/域名
 
@@ -67,7 +67,7 @@ $ vi 域名.conf
 
 # 在 Nginx 的配置文件添加命令
 #  location /微信文件.txt {
-#    alias /data/ostonline.com/微信文件.txt;
+#    alias /data/xxx.com/微信文件.txt;
 #  }
 
 $ nginx -t 
