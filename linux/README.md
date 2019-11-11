@@ -74,3 +74,10 @@ $ nginx -t
 
 $ systemctl reload nginx
 ```
+
+### 对 /data下的文件夹进行排序，显示当前目录下面的子目录的目录大小
+
+```shell
+$ du -d1 -h /data | sort -h
+```
+
