@@ -80,4 +80,9 @@ $ systemctl reload nginx
 ```shell
 $ du -d1 -h /data | sort -h
 ```
+### 查看文件，去除注释和去除空格
+
+```shell
+$ cat xxx.conf | grep -v "#" | grep -v "^$"
+```
 
