@@ -86,3 +86,8 @@ $ du -d1 -h /data | sort -h
 $ cat xxx.conf | grep -v "#" | grep -v "^$"
 ```
 
+## 批量 kill 进程
+
+```bash
+$ ps -ef | grep redis-server | grep 700 | awk '{print $2}' | xargs kill
+```
