@@ -38,3 +38,16 @@ echo "其它信息:"
 system_profiler SPDisplaysDataType SPMemoryDataType SPStorageDataType | grep 'Graphics/Displays:\|Chipset Model:\|VRAM (Total):\|Resolution:\|Memory Slots:\|Size:\|Speed:\|Storage:\|Media Name:\|Medium Type:'
 ```
 
+## Mac 快捷键
+- **`Control` +  `A` : `光标移动到段首` ，A = Ahead Of**
+- **`Control` +  `E` : `光标移动到段尾` ，E = End Of**
+- **`Control` +  `P` : `光标移动到上一行` ， P = Previous**
+- **`Control` +  `N` : `光标移动到下一行`，N = Next**
+- **`Control` +  `F` : `光标向前移动一个字符` ，F = Forward**
+- **`Control` +  `B` : `光标向后移动一个字符` ，B = Backward**
+- **`Control` + `D` : `删除光标右边的字符`，相当于 Fn + Delete**
+- **`Control` + `H` : `删除插入点左边的字符`，相当与 Delete**
+- **`Control` + `K` : `删除插入点与行或段落末尾处之间的文本`**
+- **`Control` + `T` : `将插入点后面的字符与插入点前面的字符交换`**
+- **`Control` + `O`：`在插入点后新插入一行`，相当于 return**
+
