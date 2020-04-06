@@ -4,7 +4,7 @@
 
 ## [建立 Git 仓库](create-git-repository/create-git-repository.md)
 
-## [了解工作区和暂存区](create-git-repository/create-git-repository.md)
+## [了解工作区和暂存区](working-dir-and-stage/working-dir-and-stage.md)
 
 ## [文件重命名](file-renaming/file-renaming.md)
 
