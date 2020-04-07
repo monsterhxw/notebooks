@@ -15,3 +15,5 @@
 ## [.git 目录探秘](dot-git-dir/dot-git-dir.md)
 
 ## [commit, tree, blob 三个对象之间的关系](git-objects/git-objects.md)
+
+## [分离头指针情况下的注意事项](detached-head/detached-head.md)
