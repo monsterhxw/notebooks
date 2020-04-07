@@ -112,6 +112,8 @@ I = F^   = B^3^    = A^^3^
 J = F^2  = B^3^2   = A^^3^2
 ```
 
-#### 参考资料
+## 参考资料
 
-- https://scarletsky.github.io/2016/12/29/tilde-and-caret-in-git/
+- <https://xiedaimala.com>
+
+- <https://scarletsky.github.io/2016/12/29/tilde-and-caret-in-git/>
