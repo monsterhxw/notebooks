@@ -125,8 +125,8 @@ Recorded resolution for 'hello.rb'.
 #### 现在，让我们撤消那个合并然后将它 `变基 rebase` 到 `master` 分支顶部来替代它。 使用 `git reset` 来回滚分支。
 
 ```shell
-    $ git reset --hard HEAD^
-    HEAD is now at ad63f15 i18n the hello
+$ git reset --hard HEAD^
+HEAD is now at ad63f15 i18n the hello
 ```
 
 #### 我们的合并被撤消了。 现在让我们变基主题分支。
@@ -150,9 +150,9 @@ Patch failed at 0001 i18n one word
 #### 现在，正像我们期望的一样，得到了相同的合并冲突，但是看一下  `Resolved FILE using previous resolution`  这行。 如果我们看这个文件，会发现它已经被解决了，而且在它里面没有合并冲突标记。
 
 ```shell
-    #! /usr/bin/env ruby
-    def hello puts 'hola mundo'
-    end
+#! /usr/bin/env ruby
+def hello puts 'hola mundo'
+end
 ```
 
 #### 同样，`git diff`  将会显示出它是如何自动地重新解决的：
