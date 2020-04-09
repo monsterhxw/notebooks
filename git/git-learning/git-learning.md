@@ -112,8 +112,87 @@ I = F^   = B^3^    = A^^3^
 J = F^2  = B^3^2   = A^^3^2
 ```
 
+## 推送(`push`)本地仓库分支到远程仓库分支
+
+### 本地分支能 `push` 到远程分支的前提是
+
+> 远程分支的 `最新一次 commit` 必须是本地分支的 `父 commit`
+
+## `Fast-Forward` 快进模式合并
+
+**如果 `当前分支` 的位置（HEAD）是某个要 `被 merge 的分支` 上的 `commit` 的 `父提交（root commit）`，并且 `当前分支没有任何新的 commit` 的情况下， 要进行 merge 回来时，就会自动触发 `fast-forward`。**
+
+**因为在原本分支上没有 `新的 commit` 需要被 `merge`，所以自动就会触发 fast-forward merge，就会直接把这个 commit `HEAD 指针` 移动指向到要 `被 merge 的 commit` 的位置上，同时也 `不会新增` 一个 `merge commit`。**
+
+> `Fast-Forward` 快进模式合并，在分支上的版本历史是一条直线
+
+### 我们也可以在 `Merge` 的时候 `不要 fast-forward`
+
+**Git 的 `merge 命令` 有一个参数 `--no-ff` ，这个参数是告诉 git 知道，我们这次 merge 是不需要进行 fast-forward 快进模型合并的。**
+
+### `Fast-Forward` 和 `Non-Fast-Forward` 的区别
+
+![fast-forward-1](images/fast-forward-1.png)
+
+### 加上 `--no-ff` 的优缺点
+
+- **优点：**
+
+  在开发一个功能时，通常会开一个新的 feature 分支，使用 `--no-ff` 参数可以让团队成员在日后很清楚辨识出不同的功能所包含的 commit 历史有哪些
+
+  > 额外，GitHub 的 merge `pull request` 的策略也是使用 `--no-ff`
+
+- **缺点：**
+
+  若这个任务或者 bug-fix 只有 `一个 commit`，很容易造成一堆 `小耳朵` 的存在
+
+## 命令 `git fetch` 和 `git pull`
+
+### 命令 `git fetch`
+
+**假设远程仓库叫做 `origin` ，当我们执行 `git fetch` 命令时，Git 会比较本地仓库和远程仓库的差别，会 「下载远程仓库 `origin` 上有但本地目前没有」的内容下来，并且会在本地仓库生成相应的分支。**
+
+> `fetch` 命令只会下载，并不会进行合并操作。
+
+### 命令 `git pull`
+
+**`pull` 指令其实做的事情跟 `fetch` 是一样的，差别只在于 `fetch` 只有把档案抓下来，但 `pull` 不只抓下来，还会顺便进行合并。**
+
+> 本质上， `git pull` 其实就等于 `git fetch` 加上 `merge` 指令
+
+### 命令 `git pull --rebase`
+
+> 本质上， `git pull` 其实就等于 `git fetch` 加上 `rebase` 指令
+
+## `git checkout SHA1`, `git reset SHA1` 和 `git revert SHA1` 这三个指令的区别
+
+### git checkout SHA1
+
+**这个指令会把目前的 `HEAD` 移到指定的 commit 上，并且把目前的状态变成那个 commit 时候的样子，但是不会移动任何分支（也就是分支都停在原来的地方，只有 `HEAD` 移动而已）。**
+
+**因此，整个历史纪录看起来并没有什么变化，只是 `HEAD` 暂时移到某个地方而已。**
+
+### git reset SHA1
+
+**这个指令会把目前的 `HEAD` 跟分支都一起移到指定的 commit 上，同时会根据后面追加的参数（常见的有 `--mixed`、 `--soft` 跟 `--hard`），会决定原本那些 commit 的档案跟目录的去留。使用预设的 `--mixed` 会把档案留在 `工作目录`，使用 `--soft` 会把档案跟目录留在 `暂存区`，而使用 `--hard` 则会把抛弃这些变化。**
+
+**而不管是哪个参数，不只是 `HEAD` 的位置变了，整个历史纪录看起来也会有变化（变短或变长都有可能）。**
+
+### git revert SHA1
+
+**这个指令会产生一个新的 commit，而这个 commit 的目的就是去取消（或该说是 undo）某些 commit 做的事情。**
+
+**因为本质上还是 commit，所以整个 Git 的历史纪录不会变短，只会越 revert 越长。**
+
+## 取消 `rebase` 命令
+
+### 使用 `git reflog` + `git reset --hard <rebase 之前的 commit>`
+
+### 使用 `git reset --hard ORIG_HEAD`
+
 ## 参考资料
 
-- <https://xiedaimala.com>
-
-- <https://scarletsky.github.io/2016/12/29/tilde-and-caret-in-git/>
+- [https://xiedaimala.com](https://xiedaimala.com/)
+- [https://scarletsky.github.io/2016/12/29/tilde-and-caret-in-git/](https://scarletsky.github.io/2016/12/29/tilde-and-caret-in-git/)
+- [https://qiita.com/vc7/items/6e06b0306c8a64a23263](https://qiita.com/vc7/items/6e06b0306c8a64a23263)
+- [https://gitbook.tw/interview](https://gitbook.tw/interview)
