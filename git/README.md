@@ -2,6 +2,8 @@
 
 ## [Git 学习总结](git-learning/git-learning.md)
 
+## [Git 隐藏功能 rerere 工具](git-learning/git-rerere.md)
+
 ## [玩转 Git 三剑客—学习笔记](git-learning/play-with-git.md)
 
 ## 查看所有分支
