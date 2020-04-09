@@ -82,3 +82,50 @@ index e8c7365..4712434 100644
 +
 +color : black
 ```
+
+## 比较不同的提交（commit）的指定文件的差异
+
+### 使用命令 `git diff <commit 1 hash> <commit 2 hash> -- <file name>`
+
+### 查看版本历史
+
+```shell
+git log --all --graph --oneline
+* d436f9d (HEAD -> fix/readme) fix/readme
+* 15f3041 (master) add the first git command with config
+* 9cb6422 create a comlpete web page
+* 9d31e9f add readme.md
+```
+
+### 进行比较
+
+```shell
+git diff d436f9d 15f3041
+diff --git a/readme.md b/readme.md
+index 1c7eba6..8178c76 100644
+--- a/readme.md
++++ b/readme.md
+@@ -1,2 +1 @@
+  readme
+-fix/readme
+
+
+git diff d436f9d 15f3041 -- readme.md
+diff --git a/readme.md b/readme.md
+index 1c7eba6..8178c76 100644
+--- a/readme.md
++++ b/readme.md
+@@ -1,2 +1 @@
+  readme
+-fix/readme
+
+
+git diff fix/readme master -- readme.md
+diff --git a/readme.md b/readme.md
+index 1c7eba6..8178c76 100644
+--- a/readme.md
++++ b/readme.md
+@@ -1,2 +1 @@
+  readme
+-fix/readme
+```

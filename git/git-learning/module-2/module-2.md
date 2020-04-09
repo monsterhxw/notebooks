@@ -13,3 +13,11 @@
 ## [如何将工作区的文件恢复成和暂存区的一样](checkout-file-command/checkout-file-command.md)
 
 ## [消除最近几次提交](reset-command/reset--hard.md)
+
+## [正确删除文件的方法](git-rm-command/git-rm-command.md)
+
+## [怎么处理开发中临时加塞了紧急任务](git-stash-command/git-stash-command.md)
+
+## [如何指定不需要 Git 管理的文件](gitignore-file/gitignore-file.md)
+
+## [如何将 Git 仓库备份到本地](git-backup/git-backup.md)
