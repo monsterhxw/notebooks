@@ -174,7 +174,11 @@ J = F^2  = B^3^2   = A^^3^2
 
 ### git reset SHA1
 
-**这个指令会把目前的 `HEAD` 跟分支都一起移到指定的 commit 上，同时会根据后面追加的参数（常见的有 `--mixed`、 `--soft` 跟 `--hard`），会决定原本那些 commit 的档案跟目录的去留。使用预设的 `--mixed` 会把档案留在 `工作目录`，使用 `--soft` 会把档案跟目录留在 `暂存区`，而使用 `--hard` 则会把抛弃这些变化。**
+**这个指令会把目前的 `HEAD` 跟分支都一起移到指定的 commit 上，同时会根据后面追加的参数（常见的有 `--mixed`、 `--soft` 跟 `--hard`），会决定原本那些 commit 的文件和工作区的文件去留。**
+
+- **使用预设的 `--mixed` 会把文件留在 `工作目录`，但不会留在 `暂存区`。**
+- **使用 `--soft` 会把文件留在 `工作目录` 和 `暂存区` ，所以看起来就只有 `HEAD` 的移动而已。也因此，Commit 拆出来的文件会直接放在暂存区。**
+- **使用 `--hard` 则会把抛弃这些变化。**
 
 **而不管是哪个参数，不只是 `HEAD` 的位置变了，整个历史纪录看起来也会有变化（变短或变长都有可能）。**
 
@@ -183,6 +187,154 @@ J = F^2  = B^3^2   = A^^3^2
 **这个指令会产生一个新的 commit，而这个 commit 的目的就是去取消（或该说是 undo）某些 commit 做的事情。**
 
 **因为本质上还是 commit，所以整个 Git 的历史纪录不会变短，只会越 revert 越长。**
+
+## `git reset --soft` 模式
+
+### 已 `commit` 的文件会保留到 `暂存区` 上去
+
+### 原本已在 `暂存区` 的文件不会发生改变
+
+### `工作区` 的文件不会发生改变
+
+```shell
+git status
+On branch fix/readme
+Your branch is ahead of 'zhineng/fix/readme' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+  new file:   B.java
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+  modified:   index.html
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+  C.java
+
+git reset --soft d436f9d
+
+git status
+On branch fix/readme
+Your branch is up to date with 'zhineng/fix/readme'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+  new file:   A.java
+  new file:   B.java
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+  modified:   index.html
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+  C.java
+```
+
+## `git reset --mixed` 模式（默认模式）
+
+### 已 `commit` 的文件会保留到 `工作区` 上去
+
+### 原本已在 `暂存区` 的文件会保留到 `工作区` 上去
+
+### `工作区` 的文件不会发生改变
+
+```shell
+git status
+On branch fix/readme
+Your branch is ahead of 'zhineng/fix/readme' by 1 commit.
+(use "git push" to publish your local commits)
+
+Changes to be committed:
+(use "git reset HEAD <file>..." to unstage)
+
+new file: B.java
+
+Changes not staged for commit:
+(use "git add <file>..." to update what will be committed)
+(use "git checkout -- <file>..." to discard changes in working directory)
+
+modified: index.html
+
+Untracked files:
+(use "git add <file>..." to include in what will be committed)
+
+C.java
+
+git reset HEAD^
+
+git status
+On branch fix/readme
+Your branch is up to date with 'zhineng/fix/readme'.
+
+Changes not staged for commit:
+(use "git add <file>..." to update what will be committed)
+(use "git checkout -- <file>..." to discard changes in working directory)
+
+modified: index.html
+
+Untracked files:
+(use "git add <file>..." to include in what will be committed)
+
+A.java
+B.java
+C.java
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+## `git reset --hard` 模式
+
+### 已 `commit` 的文件会丢弃掉
+
+### 原本已在 `暂存区` 的文件会丢弃掉
+
+### `工作区` 的未追踪的文件还会保留
+
+```shell
+git status
+On branch fix/readme
+Your branch is ahead of 'zhineng/fix/readme' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+  new file:   B.java
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+  modified:   index.html
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+  C.java
+
+git reset --hard HEAD^
+
+git status
+On branch fix/readme
+Your branch is up to date with 'zhineng/fix/readme'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+  C.java
+```
 
 ## 取消 `rebase` 命令
 
