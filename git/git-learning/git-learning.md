@@ -300,7 +300,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 ### 原本已在 `暂存区` 的文件会丢弃掉
 
-### `工作区` 的未追踪的文件还会保留
+### `工作区` 的文件会丢弃掉，未追踪的文件还会保留
 
 ```shell
 git status
