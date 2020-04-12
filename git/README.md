@@ -4,6 +4,8 @@
 
 ## [Git 隐藏功能 rerere 工具](git-learning/git-rerere.md)
 
+## [使用 Git bisect](git-learning/git-bisect.md)
+
 ## [玩转 Git 三剑客—学习笔记](git-learning/play-with-git.md)
 
 ## 查看所有分支
