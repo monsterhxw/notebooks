@@ -27,7 +27,7 @@ $ vim
 ~
 ```
 
-## 普通模式(`Normal Model`)
+## 普通模式(`Normal Mode`)
 
 ### 当我们输入 vim 进去到开始界面，这时候我们就处于 Vim 的 `Normal` 模式
 
